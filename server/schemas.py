@@ -7,6 +7,9 @@ class Card(BaseModel):
     class Config:
         from_attributes = True
 
+class CardCreate(BaseModel):
+    id: str
+
 class User(BaseModel):
     id: int
     username: str
