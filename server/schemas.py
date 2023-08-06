@@ -5,13 +5,12 @@ class Card(BaseModel):
     user_id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class User(BaseModel):
     id: int
     username: str
     display_name: str
-    password: str
     balance: float
     disabled: bool
     admin: bool
@@ -19,8 +18,13 @@ class User(BaseModel):
     cards : list[Card] = []
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
+
+class UserCreate(BaseModel):
+    username: str
+    password: str
+    display_name: str
 
 # This is used for jwt authentication
 class Token(BaseModel):
